@@ -1,0 +1,37 @@
+---
+title: "R Deneme"
+format: html
+editor: visual
+---
+
+## Bazı R Kodlarının Ne İşe Yaradığı Hakkında Genelgeçer Çalışma
+
+**Veri Setimizi okuması için yazdığımız kod ve kullandığımız kütüphane**;
+
+```{r}
+library(readr)
+veri <- read_csv("C:/Users/Enis/Desktop/videgamedata/VideoGameUsage_Profile.csv")
+View(veri)
+
+```
+
+**Veri analizini yapmadan önce oluşturduğumuz verinin salt halini görmemizi için tableone kütüphanesini kullanarak bir tableone oluşturuyoruz.**
+
+```{r}
+library(tableone)
+CreateTableOne(data = veri)
+```
+
+**Kaggle'dan çektiğimiz veri salt halde geldiği için düzenleme yapmamız gerekiyor. Bunun için verinin değişken tiplerini görmemizi sağlayan kodu yazıyoruz.**
+
+```{r}
+str(veri)
+```
+
+**Verinin içerisindeki değişken tipini değiştirmek istediğimiz veriyi manipüle ederek tipini dönüştürüyorz.**
+
+```{r}
+veri$favorite_game<- factor(veri$favorite_game)
+##favorite_game verisinin chr tipini factor tipine dönüştürüyoruz.
+str(veri)
+```
